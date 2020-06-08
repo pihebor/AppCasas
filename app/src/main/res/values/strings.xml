@@ -18,4 +18,5 @@
     <string name="guardar">GUARDAR</string>
     <string name="limpiar">LIMPIAR</string>
     <string name="mensaje_guardar">Casa Guardada Exitosamente</string>
+    <string name="titulo_detalle">DETALLE CASA</string>
 </resources>
