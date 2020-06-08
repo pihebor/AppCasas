@@ -8,10 +8,14 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,9 +25,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        FloatingActionButton fab;
+        RecyclerView lstCasas;
+        ArrayList<Casa> casas;
+        LinearLayoutManager llm;
+        AdaptadorCasa adaptador;
 
-        FloatingActionButton fab = findViewById(R.id.btnAgregar);
+        lstCasas = findViewById(R.id.lstCasas);
+        casas = Datos.obtener();
+        llm = new LinearLayoutManager(this);
+        adaptador = new AdaptadorCasa(casas);
 
+        llm.setOrientation(RecyclerView.VERTICAL);
+        lstCasas.setLayoutManager(llm);
+        lstCasas.setAdapter(adaptador);
+
+        fab = findViewById(R.id.btnAgregar);
     }
 
     public void agregar(View v){

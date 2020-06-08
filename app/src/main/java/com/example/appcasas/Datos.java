@@ -8,7 +8,7 @@ public class Datos {
         casas.add(c);
     }
 
-    public ArrayList<Casa> obtener(){
+    public static ArrayList<Casa> obtener(){
         return casas;
     }
 }
