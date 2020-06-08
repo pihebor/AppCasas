@@ -3,6 +3,7 @@ package com.example.appcasas;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -74,5 +75,11 @@ public class AgregarCasa extends AppCompatActivity {
         barrio.setText("");
         direccion.setText("");
         escritura.requestFocus();
+    }
+
+    public void onBackPressed(){
+        finish();
+        Intent i = new Intent(AgregarCasa.this, MainActivity.class);
+        startActivity(i);
     }
 }
