@@ -17,7 +17,7 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdaptadorCasa.OnCasaClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         lstCasas = findViewById(R.id.lstCasas);
         casas = Datos.obtener();
         llm = new LinearLayoutManager(this);
-        adaptador = new AdaptadorCasa(casas);
+        adaptador = new AdaptadorCasa(casas, this);
 
         llm.setOrientation(RecyclerView.VERTICAL);
         lstCasas.setLayoutManager(llm);
@@ -44,10 +44,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void agregar(View v){
-        Intent i;
-        i = new Intent(MainActivity.this, AgregarCasa.class);
-        startActivity(i);
+        Intent intent;
+        intent = new Intent(MainActivity.this, AgregarCasa.class);
+        startActivity(intent);
         finish();
     }
 
+    @Override
+    public void onCasaClick(Casa c) {
+        Intent intent;
+        Bundle bundle;
+
+        bundle = new Bundle();
+        bundle.putString("escritura", c.getNum_escritura());
+        bundle.putString("ciudad", c.getCiudad());
+        bundle.putString("direccion", c.getDireccion());
+        bundle.putInt("foto", c.getFoto());
+
+        intent = new Intent(MainActivity.this, DetalleCasa.class);
+        intent.putExtra("datos", bundle);
+        startActivity(intent);
+        finish();
+
+
+    }
 }
