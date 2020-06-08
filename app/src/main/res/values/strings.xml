@@ -17,4 +17,5 @@
     <string name="agregar_casa">AGREGAR CASA</string>
     <string name="guardar">GUARDAR</string>
     <string name="limpiar">LIMPIAR</string>
+    <string name="mensaje_guardar">Persona Guardada Exitosamente</string>
 </resources>
