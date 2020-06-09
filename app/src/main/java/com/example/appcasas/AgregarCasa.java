@@ -40,7 +40,7 @@ public class AgregarCasa extends AppCompatActivity {
     }
 
     public void guardar(View v){
-        String escri, dep, ciu, bar, dir;
+        String escri, dep, ciu, bar, dir, id;
         int fot;
         Casa casa;
         InputMethodManager imp = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -51,7 +51,8 @@ public class AgregarCasa extends AppCompatActivity {
         bar = barrio.getText().toString();
         dir = direccion.getText().toString();
         fot = fotoAleatoria();
-        casa = new Casa(escri, dep, ciu, bar, dir, fot);
+        id = Datos.getId();
+        casa = new Casa(escri, dep, ciu, bar, dir, fot, id);
         casa.guardar();
         limpiar();
         imp.hideSoftInputFromWindow(escritura.getWindowToken(), 0);

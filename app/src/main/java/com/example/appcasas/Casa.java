@@ -7,21 +7,42 @@ public class Casa {
     private String barrio;
     private String direccion;
     private int foto;
+    private String id;
 
-    public Casa(String num_escritura, String departamento, String ciudad, String barrio, String direccion, int foto){
+    public Casa(String num_escritura, String departamento, String ciudad, String barrio, String direccion, int foto, String id){
         this.num_escritura = num_escritura;
         this.departamento = departamento;
         this.ciudad = ciudad;
         this.barrio = barrio;
         this.direccion = direccion;
         this.foto = foto;
+        this.id = id;
     }
+
+   /* public Casa(String num_escritura, String ciudad, String direccion, int foto, String id){
+        this.num_escritura = num_escritura;
+        this.departamento = departamento;
+        this.ciudad = ciudad;
+        this.barrio = barrio;
+        this.direccion = direccion;
+        this.foto = foto;
+        this.id = id;
+    }*/
 
     public Casa(String num_escritura, String ciudad, String direccion, int foto){
         this.num_escritura = num_escritura;
         this.ciudad = ciudad;
         this.direccion = direccion;
         this.foto = foto;
+
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNum_escritura() {

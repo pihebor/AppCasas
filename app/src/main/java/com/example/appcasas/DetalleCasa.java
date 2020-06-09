@@ -22,7 +22,7 @@ public class DetalleCasa extends AppCompatActivity {
         TextView escritura, ciudad, direccion;
         Bundle bundle;
         Intent intent;
-        String escri, ciu, dir;
+        String escri, ciu, dir, id;
         int fot;
 
 

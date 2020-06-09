@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "428284231695",
+    "firebase_url": "https://casas-de209.firebaseio.com",
+    "project_id": "casas-de209",
+    "storage_bucket": "casas-de209.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428284231695:android:afced636fed705c083637a",
+        "android_client_info": {
+          "package_name": "com.example.appcasas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "428284231695-3s59tvf389hh9pltk5tj7nqvk7mp6t21.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appcasas",
+            "certificate_hash": "76333f2a0ae5c6070a400e27936efc333ea9eba9"
+          }
+        },
+        {
+          "client_id": "428284231695-d9tmp32kqglrve4lsd60u8ak1334vj2t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGdnYiI_6gDeoq6-l7kMvITlK7fvSo43c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "428284231695-d9tmp32kqglrve4lsd60u8ak1334vj2t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
