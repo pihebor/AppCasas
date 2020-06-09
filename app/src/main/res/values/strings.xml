@@ -19,4 +19,9 @@
     <string name="limpiar">LIMPIAR</string>
     <string name="mensaje_guardar">Casa Guardada Exitosamente</string>
     <string name="titulo_detalle">DETALLE CASA</string>
+    <string name="boton_eliminar">Eliminar</string>
+    <string name="eliminar_casa">Eliminar Casa</string>
+    <string name="advertencia_eliminar_casa">¿Esta Seguro de Eliminar a esta Casa?</string>
+    <string name="si">Si</string>
+    <string name="no">No</string>
 </resources>

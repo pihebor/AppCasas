@@ -17,6 +17,13 @@ public class Casa {
         this.foto = foto;
     }
 
+    public Casa(String num_escritura, String ciudad, String direccion, int foto){
+        this.num_escritura = num_escritura;
+        this.ciudad = ciudad;
+        this.direccion = direccion;
+        this.foto = foto;
+    }
+
     public String getNum_escritura() {
         return num_escritura;
     }
@@ -67,5 +74,9 @@ public class Casa {
 
     public void guardar(){
         Datos.guardar(this);
+    }
+
+    public void eliminar(){
+        Datos.eliminar(this);
     }
 }

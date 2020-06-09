@@ -1,11 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetalleCasa">
 
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        fab:menu_fab_size="normal"
+        fab:menu_showShadow="true"
+        fab:menu_shadowColor="#66000000"
+        fab:menu_shadowRadius="4dp"
+        fab:menu_shadowXOffset="1dp"
+        fab:menu_shadowYOffset="3dp"
+        fab:menu_colorNormal="@color/colorAccent"
+        fab:menu_colorPressed="@color/colorAccent"
+        fab:menu_colorRipple="#99FFFFFF"
+        fab:menu_animationDelayPerItem="50"
+        fab:menu_icon="@drawable/fab_add"
+        fab:menu_buttonSpacing="0dp"
+        fab:menu_labels_margin="0dp"
+        fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
+        fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="eliminar"
+            android:src="@android:drawable/ic_menu_delete"
+            fab:fab_label="@string/boton_eliminar"
+            fab:fab_size="mini" />
+
+    </com.github.clans.fab.FloatingActionMenu>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,6 +83,7 @@
                     android:id="@+id/lblTituloEscritura"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
                     android:text="@string/numero_escritura"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -65,6 +104,7 @@
                     android:id="@+id/lblTituloCiudad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
                     android:text="@string/ciudad"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -85,6 +125,7 @@
                     android:id="@+id/lblTituloDireccion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
                     android:text="@string/direccion"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -98,4 +139,4 @@
 
         </TableLayout>
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

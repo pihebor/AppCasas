@@ -22,6 +22,7 @@ public class AgregarCasa extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_casa);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         escritura = findViewById(R.id.txtEscritura);
         departamento = findViewById(R.id.txtDepartamento);
