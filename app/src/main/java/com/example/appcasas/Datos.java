@@ -28,11 +28,6 @@ public class Datos {
     }
 
     public static void eliminar(Casa c){
-        for (int i=0; i<casas.size(); i++){
-            if(casas.get(i).getNum_escritura().equals(c.getNum_escritura())){
-                casas.remove(i);
-                break;
-            }
-        }
+       databaseReference.child(db).child(c.getId()).removeValue();
     }
 }

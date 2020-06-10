@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements AdaptadorCasa.OnC
         bundle.putString("escritura", c.getNum_escritura());
         bundle.putString("ciudad", c.getCiudad());
         bundle.putString("direccion", c.getDireccion());
-        bundle.putInt("foto", c.getFoto());
+        bundle.putString("id", c.getId());
 
         intent = new Intent(MainActivity.this, DetalleCasa.class);
         intent.putExtra("datos", bundle);

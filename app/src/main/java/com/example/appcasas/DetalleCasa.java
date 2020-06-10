@@ -5,10 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class DetalleCasa extends AppCompatActivity {
     private Casa c;
@@ -18,13 +24,13 @@ public class DetalleCasa extends AppCompatActivity {
         setContentView(R.layout.activity_detalle_casa);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        ImageView foto;
+        final ImageView foto;
         TextView escritura, ciudad, direccion;
         Bundle bundle;
         Intent intent;
-        String escri, ciu, dir, id;
+        String escri, ciu, dir, ide;
         int fot;
-
+        StorageReference storageReference;
 
         foto = findViewById(R.id.imgFotoDetalle);
         escritura = findViewById(R.id.lblEscrituraDetalle);
@@ -34,17 +40,24 @@ public class DetalleCasa extends AppCompatActivity {
         intent = getIntent();
         bundle = intent.getBundleExtra("datos");
 
-        fot = bundle.getInt("foto");
+        ide = bundle.getString( "id");
         escri = bundle.getString("escritura");
         ciu = bundle.getString("ciudad");
         dir = bundle.getString("direccion");
 
-        foto.setImageResource(fot);
+        storageReference = FirebaseStorage.getInstance().getReference();
+        storageReference.child(ide).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(foto);
+            }
+        });
+        //foto.setImageResource(fot);
         escritura.setText(escri);
         ciudad.setText(ciu);
         direccion.setText(dir);
 
-        c = new Casa(escri, ciu, dir, fot);
+        c = new Casa(escri, ciu, dir, 0, ide);
     }
 
     public void onBackPressed(){

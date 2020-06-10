@@ -19,6 +19,14 @@ public class Casa {
         this.id = id;
     }
 
+    public Casa(String num_escritura, String ciudad, String direccion, int foto, String id){
+        this.num_escritura = num_escritura;
+        this.ciudad = ciudad;
+        this.direccion = direccion;
+        this.foto = foto;
+        this.id = id;
+    }
+
     public Casa(String num_escritura, String ciudad, String direccion, int foto){
         this.num_escritura = num_escritura;
         this.ciudad = ciudad;
