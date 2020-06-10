@@ -23,6 +23,10 @@ public class Datos {
         return casas;
     }
 
+    public static void setCasas(ArrayList<Casa> casas){
+        casas = casas;
+    }
+
     public static void eliminar(Casa c){
         for (int i=0; i<casas.size(); i++){
             if(casas.get(i).getNum_escritura().equals(c.getNum_escritura())){

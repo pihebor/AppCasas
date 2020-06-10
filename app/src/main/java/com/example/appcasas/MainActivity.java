@@ -5,7 +5,13 @@ import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,12 +34,14 @@ public class MainActivity extends AppCompatActivity implements AdaptadorCasa.OnC
 
         FloatingActionButton fab;
         RecyclerView lstCasas;
-        ArrayList<Casa> casas;
+        final ArrayList<Casa> casas;
         LinearLayoutManager llm;
-        AdaptadorCasa adaptador;
+        final AdaptadorCasa adaptador;
+        DatabaseReference databaseReference;
+        String db = "Casas";
 
         lstCasas = findViewById(R.id.lstCasas);
-        casas = Datos.obtener();
+        casas = new ArrayList<>();
         llm = new LinearLayoutManager(this);
         adaptador = new AdaptadorCasa(casas, this);
 
@@ -42,6 +50,28 @@ public class MainActivity extends AppCompatActivity implements AdaptadorCasa.OnC
         lstCasas.setAdapter(adaptador);
 
         fab = findViewById(R.id.btnAgregar);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.child(db).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                casas.clear();
+                if (dataSnapshot.exists()){
+                    for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                        Casa c = snapshot.getValue(Casa.class);
+                        casas.add(c);
+                    }
+                }
+
+                adaptador.notifyDataSetChanged();
+                Datos.setCasas(casas);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void agregar(View v){
