@@ -47,24 +47,26 @@ public class AgregarCasa extends AppCompatActivity {
     }
 
     public void guardar(View v){
-        String escri, dep, ciu, bar, dir, id;
-        int fot;
-        Casa casa;
-        InputMethodManager imp = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (validar()) {
+            String escri, dep, ciu, bar, dir, id;
+            int fot;
+            Casa casa;
+            InputMethodManager imp = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
-        escri = escritura.getText().toString();
-        dep = departamento.getText().toString();
-        ciu = ciudad.getText().toString();
-        bar = barrio.getText().toString();
-        dir = direccion.getText().toString();
-        fot = fotoAleatoria();
-        id = Datos.getId();
-        casa = new Casa(escri, dep, ciu, bar, dir, fot, id);
-        casa.guardar();
-        subirFoto(id, fot);
-        limpiar();
-        imp.hideSoftInputFromWindow(escritura.getWindowToken(), 0);
-        Snackbar.make(v, getString(R.string.mensaje_guardar),Snackbar.LENGTH_LONG).show();
+            escri = escritura.getText().toString();
+            dep = departamento.getText().toString();
+            ciu = ciudad.getText().toString();
+            bar = barrio.getText().toString();
+            dir = direccion.getText().toString();
+            fot = fotoAleatoria();
+            id = Datos.getId();
+            casa = new Casa(escri, dep, ciu, bar, dir, fot, id);
+            casa.guardar();
+            subirFoto(id, fot);
+            limpiar();
+            imp.hideSoftInputFromWindow(escritura.getWindowToken(), 0);
+            Snackbar.make(v, getString(R.string.mensaje_guardar), Snackbar.LENGTH_LONG).show();
+        }
     }
 
     public void subirFoto(String id, int foto){
@@ -97,5 +99,45 @@ public class AgregarCasa extends AppCompatActivity {
         finish();
         Intent i = new Intent(AgregarCasa.this, MainActivity.class);
         startActivity(i);
+    }
+
+    public boolean validar(){
+        String error_escritura;
+        String error_departamento;
+        String error_ciudad;
+        String error_barrio;
+        String error_direccion;
+        boolean res;
+
+        error_escritura = getResources().getString(R.string.error_escritura);
+        error_departamento = getResources().getString(R.string.error_departamento);
+        error_ciudad = getResources().getString(R.string.error_ciudad);
+        error_barrio = getResources().getString(R.string.error_barrio);
+        error_direccion = getResources().getString(R.string.error_direccion);
+        res = true;
+
+        if (escritura.getText().toString().isEmpty()|| escritura.getText().toString().equals("")){
+            escritura.setError(error_escritura);
+            escritura.requestFocus();
+            res = false;
+        }else if (departamento.getText().toString().isEmpty()|| departamento.getText().toString().equals("")){
+            departamento.setError(error_departamento);
+            departamento.requestFocus();
+            res = false;
+        }else if (ciudad.getText().toString().isEmpty()|| ciudad.getText().toString().equals("")){
+            ciudad.setError(error_ciudad);
+            ciudad.requestFocus();
+            res = false;
+        }else if (barrio.getText().toString().isEmpty()|| barrio.getText().toString().equals("")){
+            barrio.setError(error_barrio);
+            barrio.requestFocus();
+            res = false;
+        }else if (direccion.getText().toString().isEmpty()|| direccion.getText().toString().equals("")){
+            direccion.setError(error_direccion);
+            direccion.requestFocus();
+            res = false;
+        }
+
+        return res;
     }
 }
